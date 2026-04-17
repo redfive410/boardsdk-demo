@@ -1,0 +1,19 @@
+# Unity generated
+Library/
+Temp/
+Logs/
+obj/
+Build/
+Builds/
+
+# User-specific
+UserSettings/
+.utmp/
+
+# OS
+.DS_Store
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
