@@ -22,4 +22,18 @@ public class Bullet : MonoBehaviour
         if (vp.x < 0 || vp.x > 1 || vp.y < 0 || vp.y > 1)
             Destroy(gameObject);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log($"[Bullet] hit {other.gameObject.name} tag={other.tag}");
+        var health = other.GetComponentInParent<ShipHealth>();
+        if (health == null || health.playerIndex == ownerIndex) return;
+
+        if (other.CompareTag("Shield"))
+            health.HitShield();
+        else if (other.CompareTag("Ship"))
+            health.HitShip();
+
+        Destroy(gameObject);
+    }
 }

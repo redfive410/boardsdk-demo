@@ -12,14 +12,23 @@ public class ShipController : MonoBehaviour
     [SerializeField] private PlayerDashboard dashboard;
 
     private float fireCooldown;
+    private ShipHealth health;
+
+    private void Awake()
+    {
+        health = GetComponent<ShipHealth>();
+    }
 
     public void ApplyContact(BoardContact? contact)
     {
         if (!contact.HasValue || contact.Value.isNoneEndedOrCanceled)
         {
             spriteRenderer.color = inactiveColor;
+            health?.SetShipVisible(false);
             return;
         }
+
+        health?.SetShipVisible(true);
 
         var c = contact.Value;
 
@@ -30,7 +39,7 @@ public class ShipController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, c.orientation * Mathf.Rad2Deg);
         spriteRenderer.color = c.isTouched ? activeColor : inactiveColor;
 
-        bool shouldFire = c.isTouched || (dashboard != null && dashboard.FirePressed);
+        bool shouldFire = dashboard != null && dashboard.FirePressed;
         fireCooldown -= Time.deltaTime;
         if (shouldFire && fireCooldown <= 0f && bulletPrefab != null)
         {
