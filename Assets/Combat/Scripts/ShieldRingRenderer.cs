@@ -8,9 +8,11 @@ public class ShieldRingRenderer : MonoBehaviour
     [SerializeField] private Color color = new Color(0.2f, 0.6f, 1f, 0.8f);
     [SerializeField] private float width = 0.05f;
 
+    private LineRenderer lr;
+
     private void Start()
     {
-        var lr = GetComponent<LineRenderer>();
+        lr = GetComponent<LineRenderer>();
         lr.useWorldSpace = false;
         lr.loop = true;
         lr.positionCount = segments;
@@ -25,5 +27,11 @@ public class ShieldRingRenderer : MonoBehaviour
             float angle = 2f * Mathf.PI * i / segments;
             lr.SetPosition(i, new Vector3(Mathf.Cos(angle) * radius, Mathf.Sin(angle) * radius, 0f));
         }
+    }
+
+    public void SetColor(Color c)
+    {
+        color = c;
+        if (lr != null) { lr.startColor = c; lr.endColor = c; }
     }
 }

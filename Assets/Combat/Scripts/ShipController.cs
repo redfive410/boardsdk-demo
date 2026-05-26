@@ -10,13 +10,16 @@ public class ShipController : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float fireRate = 0.4f;
     [SerializeField] private PlayerDashboard dashboard;
+    [SerializeField] private ShieldRingRenderer shieldRing;
 
     private float fireCooldown;
     private ShipHealth health;
+    private bool colorInitialized;
 
     private void Awake()
     {
         health = GetComponent<ShipHealth>();
+        colorInitialized = false;
     }
 
     public void ApplyContact(BoardContact? contact)
@@ -32,12 +35,27 @@ public class ShipController : MonoBehaviour
 
         var c = contact.Value;
 
+        if (c.phase == BoardContactPhase.Began || !colorInitialized)
+        {
+            colorInitialized = true;
+            activeColor = c.glyphId switch
+            {
+                4 => new Color(1f, 0.4f, 0.6f),
+                5 => new Color(1f, 0.9f, 0f),
+                6 => new Color(0.6f, 0f, 1f),
+                7 => new Color(1f, 0.5f, 0f),
+                _ => Color.white
+            };
+            dashboard?.SetBackgroundColor(activeColor);
+            shieldRing?.SetColor(activeColor);
+        }
+
         Vector3 worldPos = Camera.main.ScreenToWorldPoint(
             new Vector3(c.screenPosition.x, c.screenPosition.y, 10f)
         );
         transform.position = worldPos;
         transform.rotation = Quaternion.Euler(0f, 0f, c.orientation * Mathf.Rad2Deg);
-        spriteRenderer.color = c.isTouched ? activeColor : inactiveColor;
+        spriteRenderer.color = activeColor;
 
         bool shouldFire = dashboard != null && dashboard.FirePressed;
         fireCooldown -= Time.deltaTime;
