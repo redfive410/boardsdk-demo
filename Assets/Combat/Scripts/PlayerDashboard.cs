@@ -6,6 +6,7 @@ public class PlayerDashboard : MonoBehaviour
 {
     [SerializeField] private Button fireButton;
     [SerializeField] private Slider intensitySlider;
+    [SerializeField] private Image background;
 
     [Tooltip("Min/max bullet speed mapped to slider 0-1")]
     public float minSpeed = 2f;
@@ -13,6 +14,12 @@ public class PlayerDashboard : MonoBehaviour
 
     public bool FirePressed { get; private set; }
     public float BulletSpeed => Mathf.Lerp(minSpeed, maxSpeed, intensitySlider != null ? intensitySlider.value : 0.5f);
+
+    public void SetBackgroundColor(Color color)
+    {
+        if (background != null)
+            background.color = color;
+    }
 
     private void Start()
     {

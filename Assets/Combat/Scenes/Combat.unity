@@ -945,6 +945,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3288123316559859308, guid: 5e96f6080698f45c5b90acfe6b6ef53d, type: 3}
   fireRate: 0.4
   dashboard: {fileID: 1272258599}
+  shieldRing: {fileID: 850731682}
 --- !u!212 &540939806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1416,6 +1417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireButton: {fileID: 17662525}
   intensitySlider: {fileID: 782488741}
+  background: {fileID: 835825743}
   minSpeed: 2
   maxSpeed: 15
 --- !u!1 &850731679
@@ -2146,6 +2148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireButton: {fileID: 596561066}
   intensitySlider: {fileID: 1355014000}
+  background: {fileID: 1272258597}
   minSpeed: 2
   maxSpeed: 15
 --- !u!1 &1353686500
@@ -2777,6 +2780,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3288123316559859308, guid: 5e96f6080698f45c5b90acfe6b6ef53d, type: 3}
   fireRate: 0.4
   dashboard: {fileID: 835825745}
+  shieldRing: {fileID: 2071205357}
 --- !u!212 &1865801430
 SpriteRenderer:
   m_ObjectHideFlags: 0
