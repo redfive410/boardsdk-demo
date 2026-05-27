@@ -15,10 +15,23 @@ public class PlayerDashboard : MonoBehaviour
     public bool FirePressed { get; private set; }
     public float BulletSpeed => Mathf.Lerp(minSpeed, maxSpeed, intensitySlider != null ? intensitySlider.value : 0.5f);
 
+    private Color defaultColor;
+
+    private void Awake()
+    {
+        defaultColor = background != null ? background.color : Color.white;
+    }
+
     public void SetBackgroundColor(Color color)
     {
         if (background != null)
             background.color = color;
+    }
+
+    public void ResetBackgroundColor()
+    {
+        if (background != null)
+            background.color = defaultColor;
     }
 
     private void Start()
