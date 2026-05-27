@@ -28,6 +28,8 @@ public class ShipController : MonoBehaviour
         {
             spriteRenderer.color = inactiveColor;
             health?.SetShipVisible(false);
+            dashboard?.ResetBackgroundColor();
+            colorInitialized = false;
             return;
         }
 

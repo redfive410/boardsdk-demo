@@ -260,3 +260,9 @@ float smoothing = BoardInput.settings.translationSmoothing;
 - Pause menu: https://docs.dev.board.fun/guides/pause-menu
 - Simulator: https://docs.dev.board.fun/guides/simulator
 - Changelog: https://docs.dev.board.fun/more/changelog
+
+## Notes
+
+- Remember to use the File-Build Profiles menu to build .apk
+- Use the build button and I have been using board_demo_vXXX.apk
+- Use the bdb CLI guidance to install and launch the game
