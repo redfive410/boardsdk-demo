@@ -5,6 +5,8 @@ public class Bullet : MonoBehaviour
     public int ownerIndex;
     public float gravityScale = 9.81f;
 
+    [SerializeField] private GameObject impactEffectPrefab;
+
     private Vector2 velocity;
 
     public void Launch(Vector2 dir, float speed)
@@ -41,6 +43,9 @@ public class Bullet : MonoBehaviour
             health.HitShield();
         else if (other.CompareTag("Ship"))
             health.HitShip();
+
+        if (impactEffectPrefab != null)
+            Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
 
         Destroy(gameObject);
     }
