@@ -18,6 +18,7 @@ A two-player space combat game built with the [Board SDK](https://docs.dev.board
 | Ship1 / Ship2 | `ShipController`, `ShipHealth`, `CircleCollider2D` (Is Trigger, tag: Ship) |
 | ShieldRing (child of ship) | `ShieldRingRenderer`, `CircleCollider2D` (Is Trigger, tag: Shield) |
 | Bullet (prefab) | `Bullet`, `CircleCollider2D` (Is Trigger), `Rigidbody2D` (Kinematic) |
+| Impact (prefab) | `ImpactEffect`, `SpriteRenderer` — sprite-sheet hit animation spawned on collision |
 | ShipManager | `ShipManager` — assign Ship1 and Ship2 in the Ships array |
 | GameManager | `GameManager` — assign GameOverPanel and GameOverText |
 | Canvas | Dashboard UI for each player (Fire button, intensity slider) |
@@ -35,6 +36,7 @@ A two-player space combat game built with the [Board SDK](https://docs.dev.board
 | `ShipHealth` | Tracks shield hits (3) and ship hits (1), triggers game over |
 | `ShieldRingRenderer` | Draws a circle ring using LineRenderer |
 | `Bullet` | Moves bullet, handles collision with shields and ships |
+| `ImpactEffect` | Plays a one-shot sprite-frame impact animation, then self-destructs |
 | `PlayerDashboard` | Reads fire button and bullet speed slider input |
 | `GameManager` | Shows game over screen, handles restart |
 
@@ -43,6 +45,6 @@ A two-player space combat game built with the [Board SDK](https://docs.dev.board
 Tested on Android (arm64), Unity 6000.0.73f1, Board SDK 3.3.0.
 
 ```
-bdb install board_demo_v1.apk
+bdb install board_demo_v4.apk
 bdb launch com.a51.board_demo
 ```
