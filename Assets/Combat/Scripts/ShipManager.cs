@@ -5,8 +5,10 @@ using System.Collections.Generic;
 public class ShipManager : MonoBehaviour
 {
     [SerializeField] private ShipController[] ships;
+    [SerializeField] private AudioSource musicSource;
 
     private int[] assignedIds;
+    private bool musicStarted;
 
     private void Awake()
     {
@@ -45,5 +47,36 @@ public class ShipManager : MonoBehaviour
             else
                 ships[i].ApplyContact(null);
         }
+
+        // Play the background music only while every ship has a piece on the board;
+        // pause it as soon as fewer than that are placed, resuming where it left off.
+        if (musicSource != null)
+        {
+            if (AllShipsPlaced())
+            {
+                if (!musicSource.isPlaying)
+                {
+                    if (musicStarted)
+                        musicSource.UnPause();
+                    else
+                    {
+                        musicSource.Play();
+                        musicStarted = true;
+                    }
+                }
+            }
+            else if (musicSource.isPlaying)
+            {
+                musicSource.Pause();
+            }
+        }
+    }
+
+    private bool AllShipsPlaced()
+    {
+        for (int i = 0; i < assignedIds.Length; i++)
+            if (assignedIds[i] == -1)
+                return false;
+        return true;
     }
 }
