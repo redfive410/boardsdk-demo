@@ -105,6 +105,8 @@ MonoBehaviour:
   ownerIndex: 0
   gravityScale: 0
   impactEffectPrefab: {fileID: 3288123316559859309, guid: 695d88ff67e9490d9052ba89487df65c, type: 3}
+  impactSound: {fileID: 8300000, guid: 6d24a813519754edfbe529b68c513b95, type: 3}
+  impactVolume: 1
 --- !u!58 &-4669018418479222532
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private AudioClip explosionSound;
+    [SerializeField, Range(0f, 1f)] private float explosionVolume = 1f;
 
     private void Awake()
     {
@@ -24,6 +26,14 @@ public class GameManager : MonoBehaviour
             gameOverText.text = $"Player {winner + 1} Wins!";
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
+
+        // Play before freezing time. AudioSource playback runs on the DSP clock and is
+        // unaffected by timeScale, so the explosion is still audible at the game-over freeze.
+        if (explosionSound != null)
+        {
+            Vector3 pos = Camera.main != null ? Camera.main.transform.position : Vector3.zero;
+            AudioSource.PlayClipAtPoint(explosionSound, pos, explosionVolume);
+        }
 
         Time.timeScale = 0f;
     }

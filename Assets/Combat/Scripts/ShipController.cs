@@ -11,6 +11,8 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float fireRate = 0.4f;
     [SerializeField] private PlayerDashboard dashboard;
     [SerializeField] private ShieldRingRenderer shieldRing;
+    [SerializeField] private AudioClip fireSound;
+    [SerializeField, Range(0f, 1f)] private float fireVolume = 1f;
 
     private float fireCooldown;
     private ShipHealth health;
@@ -69,6 +71,9 @@ public class ShipController : MonoBehaviour
             var b = bullet.GetComponent<Bullet>();
             b.ownerIndex = playerIndex;
             b.Launch(-transform.up, speed);
+
+            if (fireSound != null)
+                AudioSource.PlayClipAtPoint(fireSound, transform.position, fireVolume);
         }
     }
 }

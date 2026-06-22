@@ -946,6 +946,8 @@ MonoBehaviour:
   fireRate: 0.4
   dashboard: {fileID: 1272258599}
   shieldRing: {fileID: 850731682}
+  fireSound: {fileID: 8300000, guid: 7b4fa8e1376494935bee7fbaafd349bd, type: 3}
+  fireVolume: 1
 --- !u!212 &540939806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1271,7 +1273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 10.0000305, y: 0}
   m_SizeDelta: {x: -20, y: -40}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &782488741
@@ -2262,7 +2264,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10, y: 5}
+  m_AnchoredPosition: {x: 10.0000305, y: 5}
   m_SizeDelta: {x: -30, y: -30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1355014000
@@ -2484,6 +2486,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 363540216}
   gameOverText: {fileID: 1383642959}
+  explosionSound: {fileID: 8300000, guid: 47d63055378e24fbcb45eeccfc6bbb32, type: 3}
+  explosionVolume: 1
 --- !u!4 &1473016248
 Transform:
   m_ObjectHideFlags: 0
@@ -2781,6 +2785,8 @@ MonoBehaviour:
   fireRate: 0.4
   dashboard: {fileID: 835825745}
   shieldRing: {fileID: 2071205357}
+  fireSound: {fileID: 8300000, guid: 7b4fa8e1376494935bee7fbaafd349bd, type: 3}
+  fireVolume: 1
 --- !u!212 &1865801430
 SpriteRenderer:
   m_ObjectHideFlags: 0
