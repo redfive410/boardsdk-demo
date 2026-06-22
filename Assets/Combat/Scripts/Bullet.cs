@@ -6,6 +6,8 @@ public class Bullet : MonoBehaviour
     public float gravityScale = 9.81f;
 
     [SerializeField] private GameObject impactEffectPrefab;
+    [SerializeField] private AudioClip impactSound;
+    [SerializeField, Range(0f, 1f)] private float impactVolume = 1f;
 
     private Vector2 velocity;
 
@@ -46,6 +48,11 @@ public class Bullet : MonoBehaviour
 
         if (impactEffectPrefab != null)
             Instantiate(impactEffectPrefab, transform.position, Quaternion.identity);
+
+        // PlayClipAtPoint spawns a temporary one-shot AudioSource that outlives this
+        // bullet, so the sound still plays after the bullet is destroyed below.
+        if (impactSound != null)
+            AudioSource.PlayClipAtPoint(impactSound, transform.position, impactVolume);
 
         Destroy(gameObject);
     }
